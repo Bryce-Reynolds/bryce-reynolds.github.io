@@ -1,36 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobs Auto Glass | Mobile Windshield Replacement & Repair</title>
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Bobs Auto Glass provides expert mobile windshield replacement, repair, and ADAS recalibration. Family owned since 1977. Serving your area with quality auto glass services.">
+    <meta name="keywords" content="auto glass, windshield replacement, windshield repair, mobile service, ADAS recalibration, Bobs Auto Glass, family owned, 636-586-8279">
+    <meta property="og:title" content="Bobs Auto Glass | Mobile Windshield Replacement & Repair">
+    <meta property="og:description" content="Expert mobile windshield replacement and repair. Family owned since 1977. Call 636-586-8279.">
+    <meta property="og:image" content="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bobsglasscompany.com/">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 1rem;
+            z-index: 1050;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            #backToTop {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bobs Auto Glass</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
-  <main>
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>Project descriptions will go here.</p>
+
+    <!-- Hero Section -->
+    <section class="bg-light py-5 text-center">
+        <div class="container">
+            <div class="mb-4">
+                <span class="fw-bold display-3 text-primary-emphasis" style="text-shadow: 2px 2px 8px #fff;">Bobs Auto Glass</span>
+            </div>
+            <h1 class="display-4 mb-3">Expert Mobile Windshield Replacement and Repair</h1>
+            <p class="lead mb-4">Quality auto glass services in Festus, MO.</p>
+            <img src="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600" class="img-fluid rounded mb-3" alt="Windshield Replacement">
+            <div>
+                <p class="lead mb-2">To schedule an appointment, call us at:</p>
+                <a href="tel:6365868279" class="btn btn-primary btn-lg mt-2">636-586-8279</a>
+            </div>
+        </div>
     </section>
-    <section id="skills">
-      <h2>Skills</h2>
-      <p>Skill lists will go here.</p>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container mt-3">
+            <h2 class="mb-4 text-center">Mobile Windshield Repair and Replacement</h2>
+            <!-- Service 1 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <img src="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" class="img-fluid rounded" alt="Windshield Replacement">
+                </div>
+                <div class="col-md-6">
+                    <h4>Windshield Replacement</h4>
+                    <p>
+                        We offer expert mobile windshield replacement at your location. Our technicians use high-quality glass and materials to ensure your safety and satisfaction.
+                    </p>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="row align-items-center mb-5 flex-md-row-reverse">
+                <div class="col-md-6">
+                    <img src="https://placehold.co/600x300?text=Windshield+Repair" class="img-fluid rounded" alt="Windshield Repair">
+                </div>
+                <div class="col-md-6">
+                    <h4>Windshield Repair</h4>
+                    <p>
+                        Small chips and cracks can often be repaired quickly and affordably. We restore the integrity of your windshield and help prevent further damage.
+                    </p>
+                </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <img src="https://placehold.co/600x300?text=ADAS+Recalibration" class="img-fluid rounded" alt="ADAS Recalibration">
+                </div>
+                <div class="col-md-6">
+                    <h4>ADAS Recalibration</h4>
+                    <p>
+                        Our team is equipped to handle Advanced Driver Assistance Systems (ADAS) recalibration, ensuring your vehicle's safety features function properly after glass replacement.
+                    </p>
+                </div>
+            </div>
+            <!-- Service 4 -->
+            <div class="row align-items-center mb-5 flex-md-row-reverse">
+                <div class="col-md-6">
+                    <img src="https://placehold.co/600x300?text=Mobile+Service" class="img-fluid rounded" alt="Mobile Service">
+                </div>
+                <div class="col-md-6">
+                    <h4>Mobile Service</h4>
+                    <p>
+                        We come to you! Our fully mobile service means you can have your auto glass repaired or replaced at your home, work, or wherever is most convenient.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Contact information will go here.</p>
+
+    <!-- About Section -->
+    <section id="about" class="bg-light py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">About</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p>
+                        Bob's Auto Glass has been proudly serving the community since 1977 as a fully mobile auto glass business. As a family-owned and operated company, we're built on strong family values and a commitment to honest, reliable service.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
-  <footer>
-    <p>Footer text will go here.</p>
-  </footer>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <p class="fs-5 mb-1"><strong>Phone:</strong> <a href="tel:6365868279">636-586-8279</a></p>
+                    <p class="fs-5 mb-1"><strong>Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
+                    <p class="mb-1"><strong>Hours:</strong> M-F 9:00 AM – 5:00 PM</p>
+                    <p class="mb-1"><strong>Service Areas:</strong> Festus, MO</p>
+                    <!-- <p class="mb-0">Serving your area with mobile service!</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button (mobile only) -->
+    <!-- <button id="backToTop" class="btn btn-primary rounded-circle shadow d-md-none" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'});" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;">
+        <span class="bi bi-arrow-up" aria-hidden="true"></span>
+    </button> -->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            &copy; 2024 Bobs Auto Glass - All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // Collapse navbar on nav-link click (mobile only)
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                const navbarCollapse = document.getElementById('navbarNav');
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+
+        // Add scroll margin to #services only on mobile
+        function updateServicesScrollMargin() {
+            const servicesSection = document.getElementById('services');
+            if (window.innerWidth < 992) { // Bootstrap's lg breakpoint
+                servicesSection.style.scrollMarginTop = '150px';
+            } else {
+                servicesSection.style.scrollMarginTop = '';
+            }
+        }
+        window.addEventListener('resize', updateServicesScrollMargin);
+        window.addEventListener('DOMContentLoaded', updateServicesScrollMargin);
+    </script>
 </body>
 </html>
