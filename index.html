@@ -15,26 +15,139 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html {
             scroll-behavior: smooth;
         }
-        #backToTop {
-            position: fixed;
-            bottom: 2rem;
-            right: 1rem;
-            z-index: 1050;
-            display: none;
+        :root {
+            --bs-primary: #0d6efd; /* Default Bootstrap Blue */
+            --bs-primary-hover: #0b5ed7;
+            --bs-secondary-accent: #F0AD4E; /* Orange accent */
+            --bs-secondary-accent-hover: #E69500; /* Darker orange */
+            --text-on-accent: #212529; /* Dark text for better contrast on orange */
         }
-        @media (max-width: 768px) {
-            #backToTop {
-                display: block;
-            }
-            /* Center service headings on mobile */
-            #services h4 {
-                text-align: center;
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .display-3, .display-4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-accent {
+            background-color: var(--bs-secondary-accent);
+            border-color: var(--bs-secondary-accent);
+            color: var(--text-on-accent);
+        }
+        .btn-accent:hover {
+            background-color: var(--bs-secondary-accent-hover);
+            border-color: var(--bs-secondary-accent-hover);
+            color: var(--text-on-accent);
+        }
+
+        /* Hero Section */
+        .hero-section-with-overlay {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: white; 
+        }
+        .hero-section-with-overlay::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            z-index: 1;
+        }
+        .hero-section-with-overlay .container {
+            position: relative;
+            z-index: 2; /* Content above overlay */
+        }
+        .hero-section-with-overlay .display-3,
+        .hero-section-with-overlay .display-4,
+        .hero-section-with-overlay .lead,
+        .hero-section-with-overlay ul li {
+            color: #fff !important; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); 
+        }
+         .hero-section-with-overlay .display-3 {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7) !important;
+        }
+
+        /* Services Section */
+        #services .col-md-6 h4 {
+            display: flex;
+            align-items: center;
+        }
+        #services .col-md-6 h4 i {
+            margin-right: 0.75rem;
+            font-size: 1.75rem; 
+            color: var(--bs-primary); 
+        }
+         @media (max-width: 767.98px) {
+            #services .col-md-6 h4 {
+                justify-content: center; /* Center icon and text on mobile */
             }
         }
+
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #f8f9fa; 
+        }
+        .testimonial-card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05);
+            background-color: #fff;
+        }
+        .testimonial-card .card-body {
+            font-style: italic;
+        }
+        .testimonial-card .card-footer {
+            font-weight: bold;
+            background-color: transparent;
+            border-top: none;
+            color: #555;
+        }
+        #testimonialCarousel .carousel-control-prev-icon,
+        #testimonialCarousel .carousel-control-next-icon {
+            filter: invert(1) grayscale(100); /* Make controls black */
+        }
+
+        /* Trust Badges Section */
+        .trust-badges-section .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .trust-badges-section .badge-item i {
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem;
+            color: var(--bs-primary); 
+        }
+        .trust-badges-section .badge-item h5 {
+            font-size: 1rem;
+            font-weight: normal;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* FAQ Section */
+        .faq-section .accordion-button:not(.collapsed) {
+            color: var(--bs-primary);
+            background-color: var(--bs-light); /* Or a light version of your accent */
+        }
+        .faq-section .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+        }
+
+        /* Removed #backToTop styles */
+
     </style>
 </head>
 <body>
@@ -46,43 +159,57 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button type="button" class="btn btn-accent btn-sm fs-6" data-bs-toggle="modal" data-bs-target="#quoteModal">
+                            Get A Quote
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-light py-5 text-center">
+    <header>
+    <section class="py-5 text-center hero-section-with-overlay" style="background-image: url('https://img1.wsimg.com/isteam/stock/14587/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600');">
         <div class="container">
             <div class="mb-4">
-                <span class="fw-bold display-3 text-primary-emphasis" style="text-shadow: 2px 2px 8px #fff;">Bobs Auto Glass</span>
+                <span class="fw-bold display-3">Bobs Auto Glass</span>
             </div>
             <h1 class="display-4 mb-3">Expert Mobile Windshield Replacement and Repair</h1>
             <p class="lead mb-4">Quality auto glass services in Festus, MO.</p>
-            <img src="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600" class="img-fluid rounded mb-3" alt="Windshield Replacement">
+            <ul class="list-unstyled d-flex justify-content-center flex-wrap mt-4 mb-4">
+                <li class="mx-3 my-1 lead"><i class="bi bi-truck me-2"></i>Free Mobile Service</li>
+                <li class="mx-3 my-1 lead"><i class="bi bi-calendar-check me-2"></i>Same-Day Appointments</li>
+                <li class="mx-3 my-1 lead"><i class="bi bi-shield-check me-2"></i>Quality Guaranteed</li>
+            </ul>
             <div>
-                <p class="lead mb-2">To schedule an appointment, call us at:</p>
-                <a href="tel:6365868279" class="btn btn-primary btn-lg mt-2">636-586-8279</a>
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-accent btn-lg mt-2" data-bs-toggle="modal" data-bs-target="#quoteModal">
+                    Get a Free Quote
+                </button>
             </div>
         </div>
     </section>
+    </header>
 
+    <main>
     <!-- Services Section -->
     <section id="services" class="py-5">
         <div class="container mt-3">
-            <h2 class="mb-4 text-center">Mobile Windshield Repair and Replacement</h2>
+            <h2 class="mb-5 text-center">Mobile Windshield Repair and Replacement</h2>
             <!-- Service 1 -->
             <div class="row align-items-center mb-5">
                 <div class="col-md-6">
-                    <img src="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" class="img-fluid rounded" alt="Windshield Replacement">
+                    <img src="https://img1.wsimg.com/isteam/stock/14587/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" class="img-fluid rounded" alt="Windshield Replacement Service">
                 </div>
-                <div class="col-md-6">
-                    <h4>Windshield Replacement</h4>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <h4 class="text-md-start"><i class="bi bi-tools"></i>Windshield Replacement</h4>
                     <p>
                         We offer expert mobile windshield replacement at your location. Our technicians use high-quality glass and materials to ensure your safety and satisfaction.
                     </p>
@@ -91,10 +218,10 @@
             <!-- Service 2 -->
             <div class="row align-items-center mb-5 flex-md-row-reverse">
                 <div class="col-md-6">
-                    <img src="https://placehold.co/600x300?text=Windshield+Repair" class="img-fluid rounded" alt="Windshield Repair">
+                    <img src="https://placehold.co/600x300?text=Windshield+Repair+Service" loading="lazy" class="img-fluid rounded" alt="Windshield chip repair service">
                 </div>
-                <div class="col-md-6">
-                    <h4>Windshield Repair</h4>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <h4 class="text-md-start"><i class="bi bi-patch-check-fill"></i>Windshield Repair</h4>
                     <p>
                         Small chips and cracks can often be repaired quickly and affordably. We restore the integrity of your windshield and help prevent further damage.
                     </p>
@@ -103,10 +230,10 @@
             <!-- Service 3 -->
             <div class="row align-items-center mb-5">
                 <div class="col-md-6">
-                    <img src="https://placehold.co/600x300?text=ADAS+Recalibration" class="img-fluid rounded" alt="ADAS Recalibration">
+                    <img src="https://placehold.co/600x300?text=ADAS+Recalibration+Service" loading="lazy" class="img-fluid rounded" alt="ADAS Recalibration for auto glass">
                 </div>
-                <div class="col-md-6">
-                    <h4>ADAS Recalibration</h4>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <h4 class="text-md-start"><i class="bi bi-camera-video"></i>ADAS Recalibration</h4>
                     <p>
                         Our team is equipped to handle Advanced Driver Assistance Systems (ADAS) recalibration, ensuring your vehicle's safety features function properly after glass replacement.
                     </p>
@@ -115,10 +242,10 @@
             <!-- Service 4 -->
             <div class="row align-items-center mb-5 flex-md-row-reverse">
                 <div class="col-md-6">
-                    <img src="https://placehold.co/600x300?text=Mobile+Service" class="img-fluid rounded" alt="Mobile Service">
+                    <img src="https://placehold.co/600x300?text=Mobile+Auto+Glass+Service" loading="lazy" class="img-fluid rounded" alt="Mobile auto glass service van">
                 </div>
-                <div class="col-md-6">
-                    <h4>Mobile Service</h4>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <h4 class="text-md-start"><i class="bi bi-geo-alt-fill"></i>Mobile Service</h4>
                     <p>
                         We come to you! Our fully mobile service means you can have your auto glass repaired or replaced at your home, work, or wherever is most convenient.
                     </p>
@@ -141,6 +268,55 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 testimonials-section">
+        <div class="container">
+            <h2 class="mb-5 text-center">What Our Customers Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card card mx-auto" style="max-width: 700px;">
+                            <div class="card-body p-4">
+                                <p class="card-text">"Excellent service! They came to my workplace and replaced my windshield quickly. Highly recommend Bob's Auto Glass."</p>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                - Jane D., Festus MO
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card card mx-auto" style="max-width: 700px;">
+                            <div class="card-body p-4">
+                                <p class="card-text">"Fast, friendly, and professional. The chip repair on my windshield looks great. Fair pricing too!"</p>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                - John S., Herculaneum MO
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card card mx-auto" style="max-width: 700px;">
+                             <div class="card-body p-4">
+                                <p class="card-text">"Bob's Auto Glass handled my ADAS recalibration perfectly after my windshield replacement. Very knowledgeable team."</p>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                - Mary L., Crystal City MO
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container">
@@ -157,22 +333,107 @@
         </div>
     </section>
 
-    <!-- Back to Top Button (mobile only) -->
-    <!-- <button id="backToTop" class="btn btn-primary rounded-circle shadow d-md-none" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'});" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;">
-        <span class="bi bi-arrow-up" aria-hidden="true"></span>
-    </button> -->
+    <!-- Trust Badges Section -->
+    <section id="trust-badges-section" class="py-5 trust-badges-section bg-light">
+        <div class="container">
+            <h2 class="mb-5 text-center">Our Commitment to You</h2>
+            <div class="row text-center justify-content-center">
+                <div class="col-md-3 col-sm-6 mb-4 badge-item">
+                    <i class="bi bi-award-fill"></i>
+                    <h5>Family Owned Since 1977</h5>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 badge-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <h5>Certified Technicians</h5>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 badge-item">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    <h5>Quality Materials</h5>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 badge-item">
+                    <i class="bi bi-hand-thumbs-up-fill"></i>
+                    <h5>Satisfaction Guaranteed</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <!-- <section id="faq" class="py-5 faq-section">
+        <div class="container">
+            <h2 class="mb-5 text-center">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+                            How long does a windshield replacement take?
+                        </button>
+                    </h3>
+                    <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Typically, a windshield replacement takes about 60 to 90 minutes. However, we recommend not driving the vehicle for at least one hour after the replacement to allow the adhesive to cure properly.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                            Can you repair my windshield chip in any weather?
+                        </button>
+                    </h3>
+                    <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            For the best results, windshield repairs should be done in dry conditions. If it's raining, we'll need a covered area like a garage or carport to perform the repair. Temperature also plays a role, so we'll advise if conditions are unsuitable.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                            Do you work with insurance companies?
+                        </button>
+                    </h3>
+                    <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we work with most major insurance companies. We can help you with the claims process to make it as smooth as possible. Please have your insurance information ready when you call.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quoteModalLabel">Get a Free Quote</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="embed-responsive" style="height: 80vh;">
+                        <iframe width="100%" height="100%" src="https://app.omegaedi.com/quoter/?folder=bobsglasscompany" frameborder="0" class="embed-responsive-item"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            &copy; 2024 Bobs Auto Glass - All Rights Reserved.
+            &copy; <script>document.write(new Date().getFullYear())</script> Bob's Auto Glass - All Rights Reserved.
         </div>
     </footer>
 
     <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
         // Collapse navbar on nav-link click (mobile only)
         document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
             link.addEventListener('click', function() {
@@ -184,17 +445,95 @@
             });
         });
 
-        // Add scroll margin to #services only on mobile
-        function updateServicesScrollMargin() {
-            const servicesSection = document.getElementById('services');
-            if (window.innerWidth < 992) { // Bootstrap's lg breakpoint
-                servicesSection.style.scrollMarginTop = '150px';
-            } else {
-                servicesSection.style.scrollMarginTop = '';
-            }
+        // Add scroll margin to sections for sticky nav
+        function updateScrollMargins() {
+            const navbarHeight = document.querySelector('.navbar.sticky-top')?.offsetHeight || 0;
+            const sections = ['services', 'about', 'testimonials', 'contact', 'trust-badges-section', 'faq']; // Added 'faq'
+
+            sections.forEach(id => {
+                const sectionElement = document.getElementById(id);
+                if (sectionElement) {
+                    // Apply margin consistently for smooth scrolling with sticky nav
+                    sectionElement.style.scrollMarginTop = (navbarHeight + 20) + 'px'; 
+                }
+            });
         }
-        window.addEventListener('resize', updateServicesScrollMargin);
-        window.addEventListener('DOMContentLoaded', updateServicesScrollMargin);
+
+        window.addEventListener('resize', updateScrollMargins);
+        window.addEventListener('DOMContentLoaded', () => {
+            updateScrollMargins();
+        });
+        // Ensure updateScrollMargins is called after modal is shown/hidden if it affects layout significantly
+        const quoteModalElement = document.getElementById('quoteModal');
+        if (quoteModalElement) {
+            quoteModalElement.addEventListener('shown.bs.modal', updateScrollMargins);
+            quoteModalElement.addEventListener('hidden.bs.modal', updateScrollMargins);
+        }
     </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoGlassShop",
+        "name": "Bob's Auto Glass",
+        "telephone": "636-586-8279",
+        "image": "https://img1.wsimg.com/isteam/stock/14587/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600",
+        "url": "https://bobsglasscompany.com/",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Festus",
+            "addressRegion": "MO",
+            "postalCode": "63028", /* Replace with actual ZIP if known */
+            "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+            }
+        ],
+        "areaServed": {
+            "@type": "Place",
+            "name": "Festus, MO and surrounding areas" /* Be more specific if possible */
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Auto Glass Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile Windshield Replacement"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile Windshield Repair"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "ADAS Recalibration"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
 </body>
 </html>
